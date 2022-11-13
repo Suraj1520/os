@@ -54,3 +54,14 @@ main()
       printf("Process creation failed"); exit(-1);
     }
 }
+
+
+
+
+
+
+
+
+// Output
+// $ gcc fibprime.c
+// $ ./a.out
