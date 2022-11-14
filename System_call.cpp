@@ -78,44 +78,48 @@ printf ("\nChild ends\n");
         
  Exec--
         
- #include <stdio.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <stdlib.h>
-main(int argc, char*argv[])
+  
+#include<stdio.h>
+#include<unistd.h>
+
+int main()
 {
-pid_t pid;
-int i;
-if (argc != 3)
-{
-printf("\nInsufficient arguments to load program");
-printf("\nUsage: ./a.out <path> <cmd>\n"); exit(-
-1);
+	int i;
+	
+	printf("I am EXEC.c called by execvp() ");
+	printf("\n");
+	
+	
+	return 0;
 }
-switch(pid = fork())
+  
+        
+        
+        
+        
+  F.c(next file of exec)
+        
+        //execDemo.c
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+int main()
 {
-case -1:
-printf("Fork
-failed"); exit(-1);
-case 0:
-printf("Child process\n");
-i = execl(argv[1], argv[2],
-0); if (i < 0)
-{
-printf("%s program not loaded using exec
-system call\n", argv[2]);
-exit(-1);
-}
-default:
-wait(NULL);
-printf("Child
-Terminated\n"); exit(0);
-}
+		//A null terminated array of character
+		//pointers
+		char *args[]={"./exec",NULL};
+		execvp(args[0],args);
+	
+		/*All statements are ignored after execvp() call as this whole
+		process(execDemo.c) is replaced by another process (EXEC.c)
+		*/
+		// printf("Ending-----");
+	
+	return 0;
 }
 
-       
-       
-       
+
        
        
        
